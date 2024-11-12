@@ -9,6 +9,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,67 +19,7 @@
 
     <title>PDF to DOCX Converter</title>
     <style>
-      * {
-        margin: 0;
-        font-family: "Poppins", sans-serif;
-        font-weight: 300;
-        font-style: normal;
-        padding: 0;
-      }
-      body{
-        background-color: black;
-      }
-      nav {
-        margin: 10px;
-
-        /* position: sticky; */
-        border-radius: 10px;
-      }
-
-      .main {
-        width: 100%;
-        display: flex;
-        background-color: black;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        /* align-items: center; */
-        padding: 1rem;
-      }
-      .sub {
-        width: 95vw;
-        padding: 1rem;
-        display: flex;
-        color: white;
-        background-color: black ;
-        border-radius: 10px;
-        /* justify-content: center; */
-        flex-direction: column;
-      }
-      .info {
-        padding: 2rem;
-        /* background-color: aliceblue; */
-        border-radius: 10px;
-        width: 100%;
-      }
-      .btn{
-        margin-bottom: 10px;
-      }
-      footer{
-        display: flex;
-        justify-content: center;
-        background-color: aliceblue;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-      }
-      .result{
-        text-align: center;
-        color: white;
-      }
-      button {
-        margin-top: 45px;
-      }
+     
     </style>
   </head>
   <body>
@@ -112,6 +53,23 @@
       </div>
       <div class="result">
       <h1>Your SGPA is : {{result}}</h1>
+      </div>
+      <div class="features">
+        <table>
+          <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Credits</th>
+          </tr>
+          {% for student in data %}
+          <tr>
+            <td>{{student[0]}}</td>
+            <td>{{student[-2]}}</td>
+            <td>{{student[-1]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
       </div>
     </div>
     </div>

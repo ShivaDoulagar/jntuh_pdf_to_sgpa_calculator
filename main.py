@@ -45,14 +45,15 @@ def main():
                
                 calculated_sgpa = convert.calculate(csv_file_path)
 
-  
-                return render_template('result.html', result = calculated_sgpa )
+                table_data = convert.table_data(csv_file_path)
+
+                return render_template('result.html', result = calculated_sgpa,data = table_data )
 
             else:
                 return "Invalid file format. Please upload a PDF."
     
-    except Exception:
-        return "Some error occurred! Please try again."
+    except Exception as e:
+        return f"Some error occurred! Please try again.: {e}"
 
 
 

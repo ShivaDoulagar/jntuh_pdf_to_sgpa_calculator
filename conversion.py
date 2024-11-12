@@ -44,6 +44,23 @@ class Conversion:
         return result
     
 
+    def table_data(self,csv_path):
+        data = self.read_csv_lines(csv_path)
+        actual_data = []
+        for i in range(len(data)):
+            if data[i]==[]:
+                break
+            else:
+                data1= data[i]
+                temp = []
+                temp.append(data1[1])
+                temp.append(data1[-2])
+                temp.append(data1[-1])
+                actual_data.append(temp)
+                
+        return actual_data
+    
+
     def extract_data(self,csv_path):
         li = self.read_csv_lines(csv_path)
         grade = []
@@ -116,14 +133,14 @@ class Conversion:
 
 if __name__ == "__main__":
         
-    pdf_path = '2-1.pdf'  
+    pdf_path = '2-2.pdf'  
     csv_path = 'output_file.csv'  
 
     conversion = Conversion()
     conversion.pdf_to_csv(pdf_path, csv_path)
 
 
-    a= conversion.calculate(csv_path)
+    a= conversion.table_data(csv_path)
     print(a)
 
 
