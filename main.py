@@ -24,22 +24,17 @@ def main():
             return render_template("index.html")
         
         elif request.method == 'POST':
-            convert = conversion.Conversion()  # Instantiate the Conversion class
+            convert = conversion.Conversion() 
 
             uploaded_file = request.files['file']
             if uploaded_file and uploaded_file.filename.endswith('.pdf'):
-                # Secure the filename and save the uploaded PDF
                 file_name = secure_filename(uploaded_file.filename)
                 pdf_file = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
                 uploaded_file.save(pdf_file)
                 file_name = uploaded_file.filename
                 first_part = file_name.split('.')[0]
                 csv_file = first_part + ".csv"
-                
-                # Define the output path for the CSV file
                 csv_file_path = os.path.join(app.config['CONVERTED_FOLDER'], csv_file)
-
-                # Convert PDF to CSV
                 convert.pdf_to_csv(pdf_file, csv_file_path)
 
                
