@@ -36,8 +36,6 @@ def main():
                 csv_file = first_part + ".csv"
                 csv_file_path = os.path.join(app.config['CONVERTED_FOLDER'], csv_file)
                 convert.pdf_to_csv(pdf_file, csv_file_path)
-
-               
                 calculated_sgpa = convert.calculate(csv_file_path)
 
                 table_data = convert.table_data(csv_file_path)
